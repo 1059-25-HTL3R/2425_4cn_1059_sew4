@@ -106,6 +106,24 @@ def to_base(number:int, base:int)->str:
 
     return output
 
+def get_dec_hex_palindrom(x):
+    """
+    get the biggest number below x that is a palindrome in decimal notation as well as in hexadecimal notation
+
+    :param x: the palindrom cant be bigger than x
+    :return: the biggest palindrome that is below x
+
+    examples:
+        >>> get_dec_hex_palindrom(100)
+        11
+        >>> get_dec_hex_palindrom(1234567)
+        845548
+    """
+    for num in range(x, 0, -1):
+        if is_palindrom(num):
+            if is_palindrom(to_base(num, 16)):
+                return num
+    return -1
 
 
 
@@ -117,3 +135,4 @@ if __name__ == '__main__':
     print(palindrom_product(1552234))
     print(to_base(1234,16))
     print(to_base(1234,36))
+    print(get_dec_hex_palindrom(1234))
