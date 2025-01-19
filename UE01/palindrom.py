@@ -2,10 +2,6 @@
 author: BENJAMIN ZWETTLER
 """
 
-"""
-testestes
-"""
-
 
 def is_palindrom(input):
     """
