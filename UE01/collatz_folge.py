@@ -1,3 +1,7 @@
+"""
+author: BENJAMIN ZWETTLER
+"""
+
 from typing import List
 
 
