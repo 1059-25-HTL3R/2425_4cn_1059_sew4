@@ -76,6 +76,36 @@ def palindrom_product(x):
 
     return largest_palindrome
 
+def to_base(number:int, base:int)->str:
+    """
+    :param number: Zahl im 10er-Syste,
+    :param base: Zielsystem (maximal 36)
+    :return: Zahl im Zielsystem als String
+    >>> to_base(1234,16)
+    '4D2'
+    """
+
+    if base < 2 or base > 36:
+        raise ValueError("base has to be between 2 and 36")
+    is_negative = number < 0
+    number = abs(number)
+
+    digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    output = ""
+
+    if number == 0:
+        return 0
+
+    while number > 0 :
+        rest = number % base
+        output = digits[rest] + output
+        number = number // base
+
+    if is_negative:
+        output = -output
+
+    return output
+
 
 
 
@@ -85,3 +115,5 @@ if __name__ == '__main__':
     print(is_palindrom('1231'))
     print(is_palindrom_sentence('hallo ollah'))
     print(palindrom_product(1552234))
+    print(to_base(1234,16))
+    print(to_base(1234,36))
