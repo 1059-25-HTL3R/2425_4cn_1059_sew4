@@ -16,9 +16,11 @@ class Ceaser:
 
         :param plaintext: text der zu lowercase gemacht wird
         :return: plaintext in lowercase
-        >>>to_lowercase_letter_only("A")
+        >>>TEST= Ceaser()
+        >>>TEST.to_lowercase_letter_only("A")
         "a"
-        >>>to_lowercase_letter_only("AB")
+        >>>TEST= Ceaser()
+        >>>TEST.to_lowercase_letter_only("AB")
         "ab"
         """
         return plaintext.lower()
@@ -30,9 +32,11 @@ class Ceaser:
         :param plaintext: text der verschlüsselt werden soll
         :param key: schlüssel der zum verschlüsseln verwendet werden soll
         :return: ein string der plaintext mit key verschlüsselt ist
-        >>>encrypt("A", key = "b")
+        >>>TEST= Ceaser()
+        >>>TEST.encrypt("A", key = "b")
         "b"
-        >>>encrypt("ABC", key = "c")
+        >>>TEST= Ceaser()
+        >>>TEST.encrypt("ABC", key = "c")
         "CDE"
         """
         if key is None:
@@ -52,9 +56,11 @@ class Ceaser:
         :param ciphertext: verschlüsserter text der entschlüsselt werden soll
         :param key: schlüssel zum entschlüsseln von ciphertext
         :return: entschlüsselter string
-        >>>decrypt("B", key = "b")
+        >>>TEST= Ceaser()
+        >>>TEST.decrypt("B", key = "b")
         "a"
-        >>>decrypt("CDE", key = "c")
+        >>>TEST= Ceaser()
+        >>>TEST.decrypt("CDE", key = "c")
         "abc"
         """
         if key is None:
