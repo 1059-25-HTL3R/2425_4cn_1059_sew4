@@ -150,6 +150,7 @@ class kasiski:
 
 
 
+
 if __name__ == "__main__":
     c = Ceaser("b")
     print(c.key)
