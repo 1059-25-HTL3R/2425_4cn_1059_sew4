@@ -89,6 +89,12 @@ class Vigenere:
         self.key = key.lower()
 
     def encrypt(self, plaintext: str, key:str = None) -> str:
+        """
+
+        :param plaintext: zu verschlüsselnder text
+        :param key: key zum verschlüsseln der mehr als ein zeichen lang sein kan naber kürzer als plaintext sein sollte
+        :return: string der plaintext mit key verschlüsselt ist
+        """
         if key is None:
             key = self.key
 
@@ -100,6 +106,12 @@ class Vigenere:
         return output
 
     def decrypt(self, crypttext: str, key:str = None) -> str:
+        """
+
+        :param crypttext: verschlüsslter text
+        :param key: key zum entschlüsseln des texts
+        :return: entschlüsselter string der cryptext mit key entschlusselt ist
+        """
         if key is None:
             key = self.key
 
