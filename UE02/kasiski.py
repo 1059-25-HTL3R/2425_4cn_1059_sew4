@@ -83,6 +83,22 @@ class Ceaser:
 
         return []
 
+
+class Vigenere:
+    def __init__(self, key: str):
+        self.key = key.lower()
+
+    def encrypt(self, plaintext: str) -> str:
+        return "no"
+
+    def decrypt(self, crypttext: str) -> str:
+        return "no"
+
+
+
+
+
+
 if __name__ == "__main__":
     c = Ceaser("b")
     print(c.key)
