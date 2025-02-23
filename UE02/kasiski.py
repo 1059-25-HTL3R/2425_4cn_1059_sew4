@@ -99,8 +99,16 @@ class Vigenere:
             output += c.encrypt(char, key[index%len(self.key)])
         return output
 
-    def decrypt(self, crypttext: str) -> str:
-        return "no"
+    def decrypt(self, crypttext: str, key:str = None) -> str:
+        if key is None:
+            key = self.key
+
+        c = Ceaser()
+        crypttext = c.to_lowercase_letter_only(crypttext)
+        output = ""
+        for index, char in enumerate(crypttext):
+            output += c.decrypt(char, key[index % len(self.key)])
+        return output
 
     def crack(self) -> List[str]:
         return []
@@ -120,6 +128,7 @@ if __name__ == "__main__":
     v = Vigenere("abc")
     print(v.key)
     print(v.encrypt("abc"))
+    print(v.decrypt("ace"))
 
 
 
