@@ -28,7 +28,15 @@ class Ceaser:
 
 
     def decrypt(self, ciphertext: str, key:str = None) -> str:
-        return "no"
+        if key is None:
+            key = self.key
+
+        key = chr(ord(key) - ord('a'))
+        ciphertext = self.to_lowercase_letter_only(ciphertext)
+        output = ""
+        for char in ciphertext:
+            output += chr(ord(char) - ord(key))
+        return output
 
     def crack(self,crypttext:str, elements:int = 1) -> List[str]:
         return []
@@ -37,6 +45,7 @@ if __name__ == "__main__":
     c = Ceaser("b")
     print(c.key)
     print(c.encrypt("abc"))
+    print(c.decrypt("bcd"))
 
 
 
