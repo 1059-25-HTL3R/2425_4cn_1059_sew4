@@ -5,6 +5,7 @@ Benjamin Zwettler
 
 
 from typing import List, Set, Tuple
+from collections import Counter
 
 class Ceaser:
 
@@ -125,7 +126,26 @@ class Vigenere:
     def crack(self) -> List[str]:
         return []
 
+class kasiski:
+    def __init__(self, crypttext: str = ""):
+        self.crypttext = crypttext
 
+    def allpos(self, text:str, teilstring:str) -> List[int]:
+        return []
+
+    def alldsit(self, text:str, teilstring:str) -> Set[int]:
+        return set()
+
+    def dist_n_tuple(self, text:str, laenge:int) -> Set[Tuple[str, int]]:
+        return {('no',1)}
+
+    def dist_n_list(self, text:str, laenge:int) -> List[int]:
+        return []
+
+    def ggt(self, x:int, y:int) -> int:
+        return x
+    def ggt_count(self, zahlen:List[int]) -> Counter:
+        return Counter({})
 
 
 
