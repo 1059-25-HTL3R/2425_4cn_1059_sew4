@@ -88,11 +88,22 @@ class Vigenere:
     def __init__(self, key: str):
         self.key = key.lower()
 
-    def encrypt(self, plaintext: str) -> str:
-        return "no"
+    def encrypt(self, plaintext: str, key:str = None) -> str:
+        if key is None:
+            key = self.key
+
+        c = Ceaser()
+        plaintext = c.to_lowercase_letter_only(plaintext)
+        output = ""
+        for index, char in enumerate(plaintext):
+            output += c.encrypt(char, key[index%len(self.key)])
+        return output
 
     def decrypt(self, crypttext: str) -> str:
         return "no"
+
+    def crack(self) -> List[str]:
+        return []
 
 
 
@@ -104,6 +115,11 @@ if __name__ == "__main__":
     print(c.key)
     print(c.encrypt("abc"))
     print(c.decrypt("bcd"))
+
+    print("vigi")
+    v = Vigenere("abc")
+    print(v.key)
+    print(v.encrypt("abc"))
 
 
 
