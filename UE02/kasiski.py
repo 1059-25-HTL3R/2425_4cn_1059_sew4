@@ -173,7 +173,13 @@ class Kasiski:
         return sorted(list(unique_distances))
 
     def ggt(self, x:int, y:int) -> int:
-        return x
+        while y != 0:
+            temp = y
+            y = x % y
+            x = temp
+
+        return abs(x)
+
     def ggt_count(self, zahlen:List[int]) -> Counter:
         return Counter({})
 
@@ -199,6 +205,10 @@ if __name__ == "__main__":
     print(k.alldist("abca", "a"))
     print(k.dist_n_tuple("abcabb", 1))
     print(k.dist_n_list("abcabb", 1))
+
+    print("---")
+
+    print(k.ggt(153,6))
 
 
 
