@@ -136,11 +136,17 @@ class kasiski:
 
         for m in matches:
             positions.append(m.start())
-
         return positions
 
     def alldsit(self, text:str, teilstring:str) -> Set[int]:
-        return set()
+        allpos: List[int] = self.allpos(text, teilstring)
+        differences = []
+
+        for i in range(len(allpos)):
+            for j in range(i + 1, len(allpos)):
+                differences.append(allpos[j] - allpos[i])
+
+        return set(sorted(differences))
 
     def dist_n_tuple(self, text:str, laenge:int) -> Set[Tuple[str, int]]:
         return {('no',1)}
