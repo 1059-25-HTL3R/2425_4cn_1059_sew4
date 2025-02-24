@@ -126,7 +126,7 @@ class Vigenere:
     def crack(self) -> List[str]:
         return []
 
-class kasiski:
+class Kasiski:
     def __init__(self, crypttext: str = ""):
         self.crypttext = crypttext
 
@@ -138,7 +138,7 @@ class kasiski:
             positions.append(m.start())
         return positions
 
-    def alldsit(self, text:str, teilstring:str) -> Set[int]:
+    def alldist(self, text:str, teilstring:str) -> Set[int]:
         allpos: List[int] = self.allpos(text, teilstring)
         differences = []
 
@@ -149,10 +149,28 @@ class kasiski:
         return set(sorted(differences))
 
     def dist_n_tuple(self, text:str, laenge:int) -> Set[Tuple[str, int]]:
-        return {('no',1)}
+        result = set()
+
+        for i in range(len(text) - laenge):
+            substring = text[i: i + laenge]
+            distances = self.alldist(text, substring)
+
+            for j in distances:
+                result.add((substring, j))
+
+        return result
 
     def dist_n_list(self, text:str, laenge:int) -> List[int]:
-        return []
+        unique_distances = set()
+
+        for i in range(len(text) - laenge):
+            substring = text[i: i + laenge]
+            distances = self.alldist(text, substring)
+
+            for j in distances:
+                unique_distances.add(j)
+
+        return sorted(list(unique_distances))
 
     def ggt(self, x:int, y:int) -> int:
         return x
@@ -175,6 +193,12 @@ if __name__ == "__main__":
     print(v.encrypt("abc"))
     print(v.decrypt("ace"))
 
+    print("---")
+    k = Kasiski("cbd")
+    print(k.allpos("abca", "a"))
+    print(k.alldist("abca", "a"))
+    print(k.dist_n_tuple("abcabb", 1))
+    print(k.dist_n_list("abcabb", 1))
 
 
 
