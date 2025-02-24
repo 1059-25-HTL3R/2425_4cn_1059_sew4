@@ -3,7 +3,7 @@ Benjamin Zwettler
 
 """
 
-
+import re
 from typing import List, Set, Tuple
 from collections import Counter
 
@@ -131,7 +131,13 @@ class kasiski:
         self.crypttext = crypttext
 
     def allpos(self, text:str, teilstring:str) -> List[int]:
-        return []
+        matches = re.finditer(teilstring, text)
+        positions = []
+
+        for m in matches:
+            positions.append(m.start())
+
+        return positions
 
     def alldsit(self, text:str, teilstring:str) -> Set[int]:
         return set()
