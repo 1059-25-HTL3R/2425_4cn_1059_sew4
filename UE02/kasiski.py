@@ -2,7 +2,7 @@
 Benjamin Zwettler
 
 """
-
+import math
 import re
 from typing import List, Set, Tuple
 from collections import Counter
@@ -126,6 +126,10 @@ class Vigenere:
     def crack(self) -> List[str]:
         return []
 
+
+
+
+
 class Kasiski:
     def __init__(self, crypttext: str = ""):
         self.crypttext = crypttext
@@ -139,12 +143,12 @@ class Kasiski:
         return positions
 
     def alldist(self, text:str, teilstring:str) -> Set[int]:
-        allpos: List[int] = self.allpos(text, teilstring)
+        allposs: List[int] = self.allpos(text, teilstring)
         differences = []
 
-        for i in range(len(allpos)):
-            for j in range(i + 1, len(allpos)):
-                differences.append(allpos[j] - allpos[i])
+        for i in range(len(allposs)):
+            for j in range(i + 1, len(allposs)):
+                differences.append(allposs[j] - allposs[i])
 
         return set(sorted(differences))
 
@@ -173,12 +177,7 @@ class Kasiski:
         return sorted(list(unique_distances))
 
     def ggt(self, x:int, y:int) -> int:
-        while y != 0:
-            temp = y
-            y = x % y
-            x = temp
-
-        return abs(x)
+        return  math.gcd(x,y)
 
     def ggt_count(self, zahlen:List[int]) -> Counter:
         return Counter({})
@@ -201,14 +200,13 @@ if __name__ == "__main__":
 
     print("---")
     k = Kasiski("cbd")
-    print(k.allpos("abca", "a"))
+    text = "abcabcabcabcabc"
+    print(k.allpos(")abca", "a"))
     print(k.alldist("abca", "a"))
-    print(k.dist_n_tuple("abcabb", 1))
-    print(k.dist_n_list("abcabb", 1))
+    print(k.dist_n_tuple(text, 3))
 
     print("---")
 
-    print(k.ggt(153,6))
 
 
 
