@@ -6,7 +6,7 @@ import shutil
 import sys
 from pathlib import Path
 
-"""ein adminscript das """
+"""ein adminscript das jpg files aus einen src ordner in eine ordnerstrucktur in dest überträgt"""
 
 p_src = Path(input("Bitte src Pfad eingeben: "))
 p_des = Path(input("Bitte des Pfad eingeben: "))
