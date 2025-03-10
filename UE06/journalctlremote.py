@@ -17,3 +17,4 @@ client.connect(host, username=username, pkey=pkey)
 stdin, stdout, stderr = client.exec_command('journalctl --since ' + '"' + time + ' minutes ago"')
 print(stdout.read().decode())
 client.close()
+
