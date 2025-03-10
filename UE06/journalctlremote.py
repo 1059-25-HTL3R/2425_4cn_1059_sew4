@@ -2,6 +2,8 @@ __author__ = 'Benjamin Zwettler'
 
 import paramiko
 
+"""ein adminscript das dem command journalctl auf einer hostmaschine mit der ip addresse (hosts) ausführt und in unserer konsole asusgibt mit einem übergebenen Zeitwert."""
+
 time = input("Zeit in min: ")
 host = "192.168.241.202"
 username = "junioradmin"
