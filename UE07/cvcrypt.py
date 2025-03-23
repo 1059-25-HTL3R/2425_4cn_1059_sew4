@@ -2,10 +2,48 @@ __author__ = "Benjamin Zwettler"
 
 import argparse
 import os
+from BetterKasiski import Ceaser, Vigenere
 
-def process_file(input_file: str, output_file: str, cipher: str, key, decrypt: bool, verbose: bool):
+def process_file(input_file: str, output_file: str, chifre: str, key,encrypt: bool, decrypt: bool, verbose: bool):
     if not os.path.exists(input_file):
         raise FileNotFoundError
+
+    infile = open(input_file, 'r')
+    outfile = open(output_file, 'w')
+
+    if verbose:
+        type: str
+        chifrestring: str
+        if encrypt:
+            type = "encrypting"
+        else:
+            type = "decrypting"
+        if chifre in ["c", "ceaser"]:
+            chifrestring = "ceaser"
+        else:
+            chifrestring = "vigenere"
+
+        print(f"{type} {chifrestring} with key ({key}) form file {input_file} into file {output_file}")
+
+
+    if chifre in ["ceaser", "c"]:
+        if len(key) >1:
+            raise ValueError("ceaser does only support key a-z")
+        ceaser = Ceaser(key)
+
+        if decrypt:
+            outfile.write(ceaser.decrypt(infile.read()))
+        elif encrypt:
+            outfile.write(ceaser.encrypt(infile.read()))
+    elif chifre in ["vigenere", "v"]:
+        vigenere = Vigenere(key)
+
+        if decrypt:
+            outfile.write(vigenere.decrypt(infile.read()))
+        elif encrypt:
+            outfile.write(vigenere.encrypt(infile.read()))
+
+
 
 
 def main():
@@ -23,15 +61,7 @@ def main():
 
     args = parser.parse_args()
 
-    if args.verbose:
-        print(f"Verbose-Modus: {args.verbose}")
-        print(f"chifre: {args.chifre}")
-        print(f"srcPath: {args.infile}")
-        print(f"destPath: {args.outfile}")
-        print(f"key: {args.key}")
-        print(f"decrypt: {args.decrypt}")
-        print(f"encrypt: {args.encrypt}")
-    process_file(args.infile, args.outfile, args.cipher, args.key, args.decrypt, args.verbose)
+    process_file(args.infile, args.outfile, args.chifre, args.key,args.encrypt, args.decrypt, args.verbose)
 
 
 if __name__ == "__main__":
