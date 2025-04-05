@@ -13,7 +13,6 @@ def split_word(word:str) -> list[tuple[str, str]]:
 
 
 
-
 if __name__ == '__main__':
     print(read_all_words("de-en.txt"))
     print("goat:")
