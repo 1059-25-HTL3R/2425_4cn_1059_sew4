@@ -1,5 +1,5 @@
 __author__ = 'Benjamin Zwettler'
-
+#uwu
 from typing import Set, List
 import Levenshtein
 
@@ -77,8 +77,6 @@ def correct(word:str, alle_woerter: set[str]) ->Set[str]:
         return get_words_edit_distance2(word,alle_woerter)
     else:
         return set()
-
-
 
 if __name__ == '__main__':
     words = read_all_words('de-en.txt')
