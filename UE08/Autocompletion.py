@@ -22,6 +22,12 @@ def split_word(word:str) -> list[tuple[str, str]]:
 
 
 def get_words_edit_distance0(word:str,alle_woerter: Set[str]) -> set[str]:
+    """
+    gibt alle wörter aus alle_woerter zurück die eine edit distanz von 0 haben
+    :param word: input word das mit alle_woerter verglichen wird
+    :param alle_woerter: eine liste mit "allen" wörtern der deutschen sprache
+    :return: ein set das alle wörter mit edit distanz von 0 zu word hat
+    """
     out = []
     for listword in alle_woerter:
         if Levenshtein.distance(word, listword) == 0:
@@ -30,6 +36,12 @@ def get_words_edit_distance0(word:str,alle_woerter: Set[str]) -> set[str]:
 
 
 def get_words_edit_distance1(word:str,alle_woerter: Set[str]) -> set[str]:
+    """
+        gibt alle wörter aus alle_woerter zurück die eine edit distanz von 1 haben
+        :param word: input word das mit alle_woerter verglichen wird
+        :param alle_woerter: eine liste mit "allen" wörtern der deutschen sprache
+        :return: ein set das alle wörter mit edit distanz von 1 zu word hat
+        """
     out = []
     for listword in alle_woerter:
         if Levenshtein.distance(word, listword) == 1:
@@ -37,6 +49,12 @@ def get_words_edit_distance1(word:str,alle_woerter: Set[str]) -> set[str]:
     return set(out)
 
 def get_words_edit_distance2(word:str,alle_woerter: Set[str]) -> set[str]:
+    """
+        gibt alle wörter aus alle_woerter zurück die eine edit distanz von 2 haben
+        :param word: input word das mit alle_woerter verglichen wird
+        :param alle_woerter: eine liste mit "allen" wörtern der deutschen sprache
+        :return: ein set das alle wörter mit edit distanz von 2 zu word hat
+        """
     out = []
     for listword in alle_woerter:
         if Levenshtein.distance(word, listword) == 2:
@@ -45,6 +63,12 @@ def get_words_edit_distance2(word:str,alle_woerter: Set[str]) -> set[str]:
 
 
 def correct(word:str, alle_woerter: set[str]) ->Set[str]:
+    """
+    gibt die bestmöglichen wörter zuück die word sein könte/ist
+    :param word: input word das korregiert wird
+    :param alle_woerter: eine liste mit "allen" wörtern in der deutschen sprache
+    :return: eine liste mit wörtern die word sein könnte, falls das würd unerkennbar sei wird ein leeres set zurückgegeben
+    """
     if get_words_edit_distance0(word,alle_woerter):
         return get_words_edit_distance0(word,alle_woerter)
     elif get_words_edit_distance1(word,alle_woerter):
