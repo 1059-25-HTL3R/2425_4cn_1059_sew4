@@ -53,6 +53,18 @@ class Fraction:
             frac1 = Fraction(self.numerator * other.numerator, self.denominator * other.denominator)
             return frac1.kuerzen()
 
+    def __truediv__(self, other):
+        """wenn / geschrieben wird"""
+        if isinstance(other, Fraction):
+            frac1 = Fraction(self.numerator * other.denominator, self.denominator * other.numerator)
+            return frac1.kuerzen()
+
+    def __floordiv__(self, other):
+        """wenn // geschrieben wird"""
+        if isinstance(other, Fraction):
+            frac1 = Fraction(self.numerator * other.denominator, self.denominator * other.numerator)
+            return frac1.kuerzen()
+
 
 
 
@@ -69,3 +81,5 @@ if __name__ == "__main__":
     print((fraction2 - fraction1))
 
     print((fraction1 * fraction2))
+
+    print((fraction1 // fraction2))
