@@ -80,4 +80,4 @@ def correct(word:str, alle_woerter: set[str]) ->Set[str]:
 
 if __name__ == '__main__':
     words = read_all_words('de-en.txt')
-    print(correct('apf', words))
+    print(correct('apfe', words))
