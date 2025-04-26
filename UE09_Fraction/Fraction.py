@@ -36,6 +36,12 @@ class Fraction:
         self.denominator = self.denominator // greatestteiler
         return Fraction(self.numerator, self.denominator)
 
+    def __add__(self, other):
+        if isinstance(other, Fraction):
+            frac1 = Fraction(self.numerator, self.denominator * other.denominator)
+            frac1.numerator = (frac1.numerator * other.denominator) + (other.numerator * self.denominator)
+            return frac1.kuerzen()
+
 
 
 
@@ -47,4 +53,4 @@ class Fraction:
 if __name__ == "__main__":
     fraction1 = Fraction(6, 3)
     fraction2 = Fraction(6, 4)
-    print(fraction1.denominator)
+    print(fraction1 + fraction2)
