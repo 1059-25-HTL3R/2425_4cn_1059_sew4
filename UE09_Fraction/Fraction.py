@@ -3,7 +3,7 @@ __author__ = "Benjamin Zwettler"
 from functools import total_ordering
 from math import gcd
 
-#@total_ordering
+@total_ordering
 class Fraction:
     def __init__(self, numerator=0, denominator=1):
         if denominator == 0:
@@ -65,6 +65,17 @@ class Fraction:
             frac1 = Fraction(self.numerator * other.denominator, self.denominator * other.numerator)
             return frac1.kuerzen()
 
+    def __eq__(self, other):
+        if isinstance(other, Fraction):
+            return self.numerator == other.numerator and self.denominator == other.denominator
+        if isinstance(other, int):
+            return NotImplemented
+        return NotImplemented
+
+    def __lt__(self, other):
+        if isinstance(other, Fraction):
+            return self.numerator / self.denominator < other.numerator / other.denominator
+
 
 
 
@@ -75,7 +86,7 @@ class Fraction:
 
 if __name__ == "__main__":
     fraction1 = Fraction(6, 3)
-    fraction2 = Fraction(6, 3)
+    fraction2 = Fraction(6, 1)
     print((fraction1 + fraction2))
 
     print((fraction2 - fraction1))
@@ -83,3 +94,5 @@ if __name__ == "__main__":
     print((fraction1 * fraction2))
 
     print((fraction1 // fraction2))
+
+    print((fraction1 < fraction2))
