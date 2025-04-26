@@ -75,6 +75,9 @@ class Fraction:
     def __lt__(self, other):
         if isinstance(other, Fraction):
             return self.numerator / self.denominator < other.numerator / other.denominator
+        if isinstance(other, int):
+            return NotImplemented
+        return NotImplemented
 
 
 
@@ -95,4 +98,4 @@ if __name__ == "__main__":
 
     print((fraction1 // fraction2))
 
-    print((fraction1 < fraction2))
+    print((fraction1 < 1))
