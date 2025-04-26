@@ -1,9 +1,9 @@
 __author__ = "Benjamin Zwettler"
 
 from functools import total_ordering
+from math import gcd
 
-
-@total_ordering
+#@total_ordering
 class Fraction:
     def __init__(self, numerator=0, denominator=1):
         if denominator == 0:
@@ -12,6 +12,7 @@ class Fraction:
         self.denominator = denominator
 
     def __str__(self):
+        self.kuerzen()
         if self.numerator >= self.denominator:
             ganze = int(self.numerator / self.denominator)
             rest = self.numerator % self.denominator
@@ -26,8 +27,14 @@ class Fraction:
         """
         :return: a string representation of the Fraction
         """
+        self.kuerzen()
         return f"Fraction({self.numerator}/{self.denominator})"
 
+    def kuerzen(self):
+        greatestteiler = gcd(self.numerator, self.denominator)
+        self.numerator = self.numerator // greatestteiler
+        self.denominator = self.denominator // greatestteiler
+        return Fraction(self.numerator, self.denominator)
 
 
 
@@ -38,5 +45,6 @@ class Fraction:
 
 
 if __name__ == "__main__":
-    fraction = Fraction(5, 3)
-    print(fraction)
+    fraction1 = Fraction(6, 3)
+    fraction2 = Fraction(6, 4)
+    print(fraction1.denominator)
