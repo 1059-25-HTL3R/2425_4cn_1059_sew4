@@ -8,19 +8,26 @@ class Fraction:
     def __init__(self, numerator=0, denominator=1):
         if denominator == 0:
             raise ArithmeticError("denominator cannot be 0")
+
+        if  denominator < 0:
+            denominator = -denominator
+            numerator = -numerator
+
         self._numerator = numerator
         self._denominator = denominator
 
     def __str__(self):
         self.kuerzen()
-        if self._numerator >= self._denominator:
+        if abs(self._numerator) >= abs(self._denominator):
             ganze = int(self._numerator / self._denominator)
-            rest = self._numerator % self._denominator
+            rest = abs(self._numerator) % self._denominator
             if rest != 0:
                 return str(ganze) + " " + str(rest) +"/"+ str(self._denominator)
             else:
                 return str(ganze)
         else:
+            if self._numerator == 0:
+                return str(0)
             return str(self._numerator) + "/" + str(self._denominator)
 
     def __repr__(self) -> str:
@@ -100,18 +107,6 @@ class Fraction:
 
 
 if __name__ == "__main__":
-    fraction1 = Fraction(6, 3)
-    fraction2 = Fraction(6, 1)
-    print((fraction1 + fraction2))
-
-    print((fraction2 - fraction1))
-
-    print((fraction1 * fraction2))
-
-    print((fraction1 // fraction2))
-
-    print(fraction1._numerator)
-
-    print(fraction1._denominator)
-
-    print(fraction1.__float__())
+    fraction1 = Fraction(-1,2 )
+    fraction2 = Fraction(1, 2)
+    print(fraction1 - fraction2)
