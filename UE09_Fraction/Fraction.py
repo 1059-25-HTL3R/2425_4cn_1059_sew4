@@ -48,6 +48,11 @@ class Fraction:
             frac1.numerator = (frac1.numerator * other.denominator) - (other.numerator * self.denominator)
             return frac1.kuerzen()
 
+    def __mul__(self, other):
+        if isinstance(other, Fraction):
+            frac1 = Fraction(self.numerator * other.numerator, self.denominator * other.denominator)
+            return frac1.kuerzen()
+
 
 
 
@@ -59,6 +64,8 @@ class Fraction:
 if __name__ == "__main__":
     fraction1 = Fraction(6, 3)
     fraction2 = Fraction(6, 3)
-    print(fraction1 + fraction2)
+    print((fraction1 + fraction2))
 
-    print(fraction2 - fraction1)
+    print((fraction2 - fraction1))
+
+    print((fraction1 * fraction2))
