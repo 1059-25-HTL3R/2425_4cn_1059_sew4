@@ -1,12 +1,9 @@
 __author__ = "Benjamin Zwettler"
 
+from functools import total_ordering
 
 
-
-
-
-
-
+@total_ordering
 class Fraction:
     def __init__(self, numerator=0, denominator=1):
         if denominator == 0:
@@ -25,7 +22,15 @@ class Fraction:
         else:
             return str(self.numerator) + "/" + str(self.denominator)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
+        """
+        :return: a string representation of the Fraction
+        """
+        return f"Fraction({self.numerator}/{self.denominator})"
+
+
+
+
 
 
 
