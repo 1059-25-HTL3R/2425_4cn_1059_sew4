@@ -85,6 +85,10 @@ class Fraction:
     def _denominator(self):
         return self._denominator
 
+    def __float__(self):
+        return self._numerator / self._denominator
+
+
 
 
 
@@ -106,5 +110,8 @@ if __name__ == "__main__":
 
     print((fraction1 // fraction2))
 
-
     print(fraction1._numerator)
+
+    print(fraction1._denominator)
+
+    print(fraction1.__float__())
